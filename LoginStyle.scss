@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.Login-Container {
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+#root {
+  background-image: url("Photo/Login-bakcground.png");
+}
+
+.Container {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  margin: auto;
+  padding: 2.5rem;
+  border: 1px #ddd solid;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.Container > * {
+  margin-top: 0.675rem;
+}
+
+.Logo {
+  width: 3.75rem;
+  height: 4.375rem;
+  background-color: transparent;
+  margin: auto;
+}
+
+.Login-Email-Container {
+  border: 1px solid gray;
+  position: relative;
+  cursor: text;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.Login-Email-Container-Hover {
+  border: 1px solid blue;
+}
+
+.Login-Email-Container-Focus {
+  border: 3px solid blue;
+  box-shadow: 0 0 10px 6px rgba(16, 114, 235, 0.3);
+  border-radius: 3px;
+}
+
+.Label {
+  z-index: 1;
+  top: 1.3rem;
+  left: 5px;
+  white-space: nowrap;
+  position: absolute;
+  color: gray;
+  transition: 0.2s;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.Label-Email-Focus {
+  font-size: 15px;
+  top: 0.25rem;
+}
+
+.Login-Email {
+  height: 3.5rem;
+  border: 3.125rem;
+}
+
+.Login-Email:focus {
+  outline: none;
+}
+
+.Forget-Password {
+  font-family: "PayPal Sans Big", sans-serif;
+  font-weight: bold;
+  color: #1072eb;
+  text-decoration: none;
+  font-size: 17px;
+  position: relative;
+
+}
+
+.Forget-Password::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #1072eb;
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.Forget-Password:hover::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+.Next-Button,
+.Signup-Button {
+  height: 50px;
+  background-color: darkblue;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 20px 0 20px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.Next-Button {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.Next-Button::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #0000a5;
+  transform-origin: center;
+  transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+  transition: transform 0.25s ease-in-out;
+
+}
+
+.Next-Button:hover {
+  color: #161616;
+}
+
+.Next-Button:hover::before {
+  transform: translate3d(-50%, -50%, 0) scale3d(25, 25, 25);
+}
+
+.Signup-Button {
+  background-color: white;
+  color: darkblue;
+  border: 1px darkblue solid;
+  font-weight: lighter;
+  margin: 20px 0 10px 0;
+}
+
+.Signup-Button:hover {
+  border: 2px darkblue solid;
+}
+
+.Next-Button:active,
+.Signup-Button:active {
+  box-shadow: 0 0 1px 4px rgba(16, 114, 235, 0.3);
+}
+
+
+.Separator-Container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Login-Signup-Separator {
+  width: 50%;
+  border-top: 1px solid gray;
+}
+
+@font-face {
+  font-family: 'PayPal Sans Big';
+  src: url("https://www.paypalobjects.com/paypal-ui/fonts/PayPalSansBig-Medium.woff2") format('woff2')
+}
+
+@import '@fortawesome/fontawesome-free/css/all.css';
