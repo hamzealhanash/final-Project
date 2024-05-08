@@ -1,0 +1,172 @@
+@mixin borderState($border,$radius, $shadow) {
+    border: $border;
+    border-radius: $radius;
+    box-shadow: $shadow;
+}
+
+@mixin Button($color,$BGColor,$Wight) {
+    position: relative;
+    height: 50px;
+    margin: 20px 0 10px 0;
+    color: $color;
+    background-color: $BGColor;
+    font: $Wight 15px sans-serif;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    &:active {
+        box-shadow: 0 0 1px 4px rgba(16, 114, 235, 0.3);
+    }
+}
+
+@mixin Before($left,$Height,$BGColor,$transform,$transition) {
+    content: '';
+    position: absolute;
+    left: $left;
+    height: $Height;
+    background-color: $BGColor;
+    transition: transform $transition;
+    transform: $transform;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    margin: auto;
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    font-family: sans-serif;
+
+    .Logo {
+        width: 3.75rem;
+        margin: 0 auto 2.5rem auto;
+    }
+}
+
+.Login-Container {
+    @include borderState(1px solid gray, 2px, 0);
+    position: relative;
+    margin-top: 0.675rem;
+    background-color: white;
+    cursor: text;
+
+    .Domain-Name {
+        position: absolute;
+        right: 1%;
+        top: 38%;
+        color: gray;
+        font-weight: bold;
+    }
+
+    &#{&}-Focus {
+        @include borderState(3px solid blue, 2px, 0 0 10px 6px rgba(16, 114, 235, 0.3));
+    }
+
+    &#{&}-Error {
+        @include borderState(3px solid red, 2px, 0 0 10px 6px rgba(235, 16, 16, 0.3));
+    }
+}
+
+.Label {
+    position: absolute;
+    top: 1.3rem;
+    left: 5px;
+    color: gray;
+    font-weight: bold;
+    transition: 0.2s;
+
+    &#{&}-Focus {
+        font-size: 13px;
+        top: 0.4rem;
+    }
+}
+
+#Login-Email, #Login-Password {
+    height: 3.5rem;
+    border: 3.125rem;
+    font: bold 20px sans-serif;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+#Show-Icon {
+    position: absolute;
+    display: none;
+    height: 20px;
+    right: 5%;
+    top: 30%;
+    margin: -1rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.Forget-Password {
+    font: bold 1rem "PayPal Sans Big", sans-serif;
+    color: #1072eb;
+    text-decoration: none;
+    position: relative;
+
+    &::before {
+        @include Before(0, 0.125rem, #1072eb, scaleX(0), 0.5s ease);
+        bottom: 0;
+        right: 0;
+    }
+
+    &:hover::before {
+        transform: scaleX(1);
+    }
+}
+
+.Next-Button {
+    @include borderState(none, 2rem, 0);
+    @include Button(white, darkblue, bold);
+
+    &::before {
+        @include Before(50%,1rem,#0000a5,translate3d(-50%, -50%, 0) scale3d(0, 0, 0),0.25s ease-in-out);
+        width: 1em;
+        top: 50%;
+        border-radius: 50%;
+        transform-origin: center;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: #161616;
+    }
+
+    &:hover::before {
+        transform: translate3d(-50%, -50%, 0) scale3d(25, 25, 25);
+    }
+}
+
+.Separator-Container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .Login-Signup-Separator {
+        width: 50%;
+        border-top: 1px solid gray;
+    }
+}
+
+.Signup-Button {
+    @include borderState(1px darkblue solid, 2rem, 0);
+    @include Button(darkblue, white, lighter);
+
+    &:hover {
+        border: 2px darkblue solid;
+    }
+
+}
+
+@font-face {
+    font-family: 'PayPal Sans Big';
+    src: url("https://www.paypalobjects.com/paypal-ui/fonts/PayPalSansBig-Medium.woff2") format('woff2')
+}
